@@ -10,19 +10,19 @@ const guard = document.querySelector(".guard");
 let guardInString = localStorage.getItem("escorpo") || "";
 console.log(guardInString);
 
+let numID;
 
 
 guard.innerHTML = guardInString.replaceAll("ª", "");
 
 let editClass, AddClass;
-let locationAdd = [1, 2, 3, 4, 5]; 
 
 function addicted() {
     const estrutura = `<div class="tarefa">
             <p class="texto">${txtDigitado.value}</p>
             <button class="edit">Editar</button>
             <button class="excluir">Excluir</button>
-            <button>Concluir</button>
+            <button class="concluir">Concluir</button>
         </div>`;
 
     
@@ -56,17 +56,12 @@ document.querySelectorAll('.excluir').forEach((all, i) =>  {
 const tarefa = document.querySelectorAll('.tarefa');
 
 const btsEdit = document.querySelectorAll(".edit");
+const btsConcluir = document.querySelectorAll(".concluir");
 
 const IndexP = document.querySelectorAll('.tarefa p');
 
 
 btsEdit.forEach((all, i) => all.addEventListener("click", function() {
-    alert ('botão ' + i);
-
-    
-
-    
-
     if (btsEdit[i].textContent.includes('salvar')) {
         // locationAdd[i]++;
 
@@ -83,9 +78,6 @@ btsEdit.forEach((all, i) => all.addEventListener("click", function() {
         guardInString = tryArr.join("ª");
         localStorage.setItem("escorpo", guardInString);
 
-        
-
-        // alert ("Verdadeiro");
     } else {
         tarefa.forEach((all, index) => {
             all.style.borderColor = '';
@@ -94,17 +86,18 @@ btsEdit.forEach((all, i) => all.addEventListener("click", function() {
         });
         tarefa[i].style.borderColor = 'aqua';
         all.textContent = 'salvar';
-        // alert ("Falso");
+        
     }
 
-    
-
-    
-
-
-    // const returnString = isArr.join("ª");
-    // guardInString = returnString;
-    // localStorage.setItem("escorpo", guardInString);
-    
-
 }));
+
+btsConcluir.forEach((all, i) => {all.addEventListener('click', () => {
+    tarefa[i].classList.add('concluida');
+    let taranformString = tarefa[i].outerHTML;
+    let tranformArr = guardInString.split("ª");
+    tranformArr[i] = taranformString;
+    guardInString = tranformArr.join("ª");
+    localStorage.setItem("escorpo", guardInString);
+});
+
+});

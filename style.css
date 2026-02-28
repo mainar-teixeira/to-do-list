@@ -104,3 +104,7 @@ textarea {
 .txtColor {
     position: relative;
 }
+
+.concluida {
+    border-color: green;
+}
