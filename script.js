@@ -101,3 +101,16 @@ btsConcluir.forEach((all, i) => {all.addEventListener('click', () => {
 });
 
 });
+
+
+const btConcluir = document.getElementById('filter2');
+
+btConcluir.addEventListener('click', () => {
+    tarefa.forEach((all, i) => {
+        if (all.classList.contains('concluida')) {
+            all.style.display = 'block';
+        } else {
+            all.style.display = 'none';
+        }
+    });
+});
