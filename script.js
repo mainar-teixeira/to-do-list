@@ -102,7 +102,7 @@ btsConcluir.forEach((all, i) => {all.addEventListener('click', () => {
 
 });
 
-
+const btAll = document.getElementById('filter1');
 const btConcluir = document.getElementById('filter2');
 const btPendente = document.getElementById('filter3');
 
@@ -123,5 +123,11 @@ btPendente.addEventListener('click', () => {
         } else {
             all.style.display = 'none';
         }
+    });
+});
+
+btAll.addEventListener('click', () => {
+    tarefa.forEach((all) => {
+        all.style.display = 'block';
     });
 });
