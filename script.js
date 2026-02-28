@@ -104,10 +104,21 @@ btsConcluir.forEach((all, i) => {all.addEventListener('click', () => {
 
 
 const btConcluir = document.getElementById('filter2');
+const btPendente = document.getElementById('filter3');
 
 btConcluir.addEventListener('click', () => {
-    tarefa.forEach((all, i) => {
+    tarefa.forEach((all) => {
         if (all.classList.contains('concluida')) {
+            all.style.display = 'block';
+        } else {
+            all.style.display = 'none';
+        }
+    });
+});
+
+btPendente.addEventListener('click', () => {
+    tarefa.forEach((all) => {
+        if (!all.classList.contains('concluida')) {
             all.style.display = 'block';
         } else {
             all.style.display = 'none';
