@@ -15,6 +15,7 @@ console.log(guardInString);
 guard.innerHTML = guardInString.replaceAll("ª", "");
 
 let editClass, AddClass;
+let locationAdd = [1, 2, 3, 4, 5]; 
 
 function addicted() {
     const estrutura = `<div class="tarefa">
@@ -52,16 +53,58 @@ document.querySelectorAll('.excluir').forEach((all, i) =>  {
 });
 
 
+const tarefa = document.querySelectorAll('.tarefa');
+
+const btsEdit = document.querySelectorAll(".edit");
+
+const IndexP = document.querySelectorAll('.tarefa p');
 
 
-
-document.querySelectorAll(".edit").forEach((all, i) => all.addEventListener("click", function() {
+btsEdit.forEach((all, i) => all.addEventListener("click", function() {
     alert ('botão ' + i);
 
-    guardInString.split("ª");
-    guardInString[i] = guardInString[i].replace(`<div class="tarefa">`, `<div class="tarefa a">`);
-    // guardInString.join("ª");
     
+
+    
+
+    if (btsEdit[i].textContent.includes('salvar')) {
+        // locationAdd[i]++;
+
+        tarefa[i].style.borderColor = '';
+        all.textContent = 'Editar';
+        IndexP[i].textContent = txtDigitado.value;
+        
+        
+        let tryArr = guardInString.split("ª");
+        let cont = tarefa[i];
+        console.log(cont.outerHTML);
+        tryArr[i] = cont.outerHTML;
+        
+        guardInString = tryArr.join("ª");
+        localStorage.setItem("escorpo", guardInString);
+
+        
+
+        // alert ("Verdadeiro");
+    } else {
+        tarefa.forEach((all, index) => {
+            all.style.borderColor = '';
+            btsEdit[index].textContent = 'Editar';
+
+        });
+        tarefa[i].style.borderColor = 'aqua';
+        all.textContent = 'salvar';
+        // alert ("Falso");
+    }
+
+    
+
+    
+
+
+    // const returnString = isArr.join("ª");
+    // guardInString = returnString;
+    // localStorage.setItem("escorpo", guardInString);
     
 
 }));
